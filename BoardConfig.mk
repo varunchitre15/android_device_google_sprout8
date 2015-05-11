@@ -20,8 +20,4 @@ LOCAL_PATH := device/google/sprout8
 
 TARGET_OTA_ASSERT_DEVICE := sprout,sprout8
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/root/init.sprout.rc:root/init.sprout.rc \
-    $(LOCAL_PATH)/rootdir/root/fstab.sprout:root/fstab.sprout
-
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/root/fstab.sprout
+TARGET_RECOVERY_FSTAB := device/google/sprout8/rootdir/root/fstab.sprout
