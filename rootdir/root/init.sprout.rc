@@ -2,7 +2,9 @@
 
 import /init.sprout_common.rc
 
-mkdir /mnt/shell/emulated 0700 shell shell
+on init
+    # See storage config details at http://source.android.com/tech/storage/
+    mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage/emulated 0555 root root
 
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
@@ -12,6 +14,12 @@ mkdir /mnt/shell/emulated 0700 shell shell
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
     export SECONDARY_STORAGE /storage/sdcard1
+
+    # Support legacy paths
+    symlink /storage/emulated/legacy /sdcard
+    symlink /storage/emulated/legacy /mnt/sdcard
+    symlink /storage/emulated/legacy /storage/sdcard0
+    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
 
 on fs
     setprop ro.crypto.fuse_sdcard true
